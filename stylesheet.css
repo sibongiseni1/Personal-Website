@@ -84,6 +84,11 @@ section {
     display: flex;
     align-items: center;
     padding: 0 10%;
+    justify-content: space-around;
+}
+
+span {
+    color:red;
 }
 
 .home-content {
@@ -160,6 +165,26 @@ section {
 }
 
 
+.btn-box1 a{
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 100%;
+    background: #0038f0;
+    border: 2.2px solid darkblue;
+    border-radius: 10px;
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    letter-spacing: 1px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+
 .btn-box a:nth-child(2){
     background: transparent;
     color: white;
@@ -177,7 +202,23 @@ section {
     transition: .3s;
 }
 
+.btn-box1 a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background:darkblue;
+    z-index: -1;
+    transition: .3s;
+}
+
 .btn-box a:hover:before {
+    width: 100%;
+}
+
+.btn-box1 a:hover:before {
     width: 100%;
 }
 
@@ -234,4 +275,74 @@ section {
     100% {
         width: 0;
     }
+}
+
+.About img{
+    height: auto;
+    width: 430px;
+    
+}
+
+.Services .home-content h1{
+    text-align: center;
+    margin-top: 150px;
+}
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+}
+
+.card{
+    margin: 15px;
+    width: 50%;
+    box-sizing: border-box;
+    float: left;
+    text-align: center;
+    border-radius: 20px;
+    cursor: pointer;
+    padding-top:10px;
+    box-shadow: 0 14px 28px white;
+    transition: .4s;
+}
+
+.card:hover{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16),
+    0 3px 6px rgba(0,0,0,0.23);
+    transform: translate(0px, -8px);
+}
+
+h5{
+    font-size: 20px;
+}
+
+.pra p{
+    font-size: 16px;
+    line-height: 27px;
+    margin-bottom: auto;
+}
+
+.button{
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100%;
+    background: #0038f0;
+    border: 3px solid darkblue;
+    border-radius: 10px;
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    letter-spacing: 1px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.button:hover {
+    background-color: transparent;
 }
