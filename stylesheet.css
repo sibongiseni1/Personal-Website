@@ -77,6 +77,26 @@ section {
     padding: 0 10%;
 }
 
+.Contact {
+    height: 100vh;
+   /* background: url('Profile.png') no-repeat ;*/
+    background-size:cover;
+    background-position: right;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.Services {
+    height: 100vh;
+   /* background: url('Profile.png') no-repeat ;*/
+    background-size:cover;
+    background-position: right;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
 .About {
     height: 100vh;
     background-size:cover;
@@ -345,4 +365,38 @@ h5{
 
 .button:hover {
     background-color: transparent;
+}
+
+.Contact p{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+footer{
+    position: relative;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer p:nth-child(1){
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+footer p:nth-child(2){
+    font-size: 15px;
+    width: 600px;
+    text-align: center;
+    line-height: 20px;
+}
+
+
+.end{
+    position: absolute;
+    top: 100px;
 }
