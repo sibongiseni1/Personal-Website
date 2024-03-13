@@ -399,4 +399,5 @@ footer p:nth-child(2){
 .end{
     position: absolute;
     top: 100px;
+    color: red;
 }
