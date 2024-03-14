@@ -401,3 +401,48 @@ footer p:nth-child(2){
     top: 100px;
     color: red;
 }
+
+.home-sci1 {
+    position: absolute;
+    bottom: 100px;
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.home-sci1 a{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border:  2px solid darkblue;
+    border-radius: 50%;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    z-index: 1;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.home-sci1 a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background:red;
+    z-index: -1;
+    transition: .3s;
+}
+
+.home-sci1 a:hover::before {
+    width: 100%;
+}
+
+
