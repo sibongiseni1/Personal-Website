@@ -75,6 +75,8 @@ section {
     display: flex;
     align-items: center;
     padding: 0 10%;
+    grid-template-columns: repeat(2, 2fr);
+    grid-gap: 6rem;
 }
 
 .Contact {
@@ -446,3 +448,40 @@ footer p:nth-child(2){
 }
 
 
+.contact-form h1{
+    font-size: 80px;
+    margin-bottom: 15px;
+}
+
+.contact-form p{
+    letter-spacing: 1px;
+    line-height: 26px;
+    font-size: 1rem;
+    margin-bottom: 3.2rem;
+}
+
+.contact-form form{
+    position: relative;
+}
+
+.contact-form form input,form textarea{
+    width: 100%;
+    padding: 17px;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+    border-radius: 5px;
+}
+
+.contact-form textarea{
+    resize: none;
+    height: 150px;
+}
+
+.contact-form form .btn{
+    display: inline-block;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
