@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0a0f1e;
+  --navy2:#111827;
+  --accent:#00d4aa;
+  --accent2:#0099ff;
+  --text:#e8eaf0;
+  --muted:#8892a4;
+  --card:#161d2e;
+  --border:#1e2d42;
+  --chat-bg:#0d1420;
+}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--navy);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+.site{max-width:1100px;margin:0 auto;padding:0 24px 80px;}
+
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:24px 0 40px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:60px;
+}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;letter-spacing:-0.5px;color:#fff;}
+.logo span{color:var(--accent);}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{
+  color:var(--muted);font-size:14px;font-weight:500;text-decoration:none;
+  transition:color 0.2s;letter-spacing:0.3px;
+}
+.nav-links a:hover{color:var(--accent);}
+
+.hero{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+  margin-bottom:100px;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.2);
+  color:var(--accent);font-size:12px;font-weight:500;
+  padding:6px 14px;border-radius:20px;margin-bottom:24px;letter-spacing:0.5px;
+}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:52px;
+  line-height:1.05;letter-spacing:-2px;color:#fff;margin-bottom:20px;
+}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero p{color:var(--muted);font-size:17px;line-height:1.7;margin-bottom:32px;}
+.btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--accent);color:#000;font-weight:600;font-size:14px;
+  padding:13px 28px;border-radius:8px;text-decoration:none;
+  transition:opacity 0.2s;border:none;cursor:pointer;font-family:inherit;
+}
+.btn-primary:hover{opacity:0.85;}
+.btn-outline{
+  background:transparent;color:#fff;font-weight:500;font-size:14px;
+  padding:13px 28px;border-radius:8px;border:1px solid var(--border);
+  text-decoration:none;transition:border-color 0.2s;cursor:pointer;font-family:inherit;
+}
+.btn-outline:hover{border-color:var(--accent);}
+
+.hero-visual{
+  display:flex;flex-direction:column;gap:12px;
+}
+.stat-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:20px 24px;display:flex;align-items:center;gap:16px;
+}
+.stat-icon{
+  width:42px;height:42px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+}
+.stat-icon.green{background:rgba(0,212,170,0.1);}
+.stat-icon.blue{background:rgba(0,153,255,0.1);}
+.stat-icon.amber{background:rgba(251,191,36,0.1);}
+.stat-val{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;color:#fff;}
+.stat-label{font-size:13px;color:var(--muted);}
+
+section{margin-bottom:80px;}
+.section-label{
+  font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:10px;
+}
+.section-title{
+  font-family:'Syne',sans-serif;font-weight:700;font-size:32px;
+  color:#fff;margin-bottom:40px;letter-spacing:-1px;
+}
+
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.skill-chip{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:16px 20px;transition:border-color 0.2s;
+}
+.skill-chip:hover{border-color:var(--accent);}
+.skill-name{font-weight:500;font-size:14px;color:#fff;margin-bottom:4px;}
+.skill-bar{height:3px;background:var(--border);border-radius:2px;margin-top:10px;}
+.skill-fill{height:3px;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+
+.timeline{position:relative;padding-left:24px;}
+.timeline::before{
+  content:'';position:absolute;left:0;top:8px;bottom:8px;
+  width:1px;background:var(--border);
+}
+.tl-item{position:relative;margin-bottom:36px;}
+.tl-dot{
+  position:absolute;left:-28px;top:6px;
+  width:9px;height:9px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--navy);
+}
+.tl-date{font-size:11px;color:var(--accent);font-weight:600;letter-spacing:1px;margin-bottom:6px;}
+.tl-role{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;color:#fff;}
+.tl-org{font-size:13px;color:var(--muted);margin-bottom:8px;}
+.tl-desc{font-size:14px;color:var(--muted);line-height:1.6;}
+
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.project-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:24px;transition:transform 0.2s,border-color 0.2s;
+}
+.project-card:hover{transform:translateY(-3px);border-color:rgba(0,212,170,0.3);}
+.proj-icon{
+  width:44px;height:44px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;margin-bottom:16px;
+}
+.proj-title{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:#fff;margin-bottom:8px;}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{
+  font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;
+  background:rgba(0,212,170,0.08);color:var(--accent);border:1px solid rgba(0,212,170,0.15);
+}
+.proj-link{
+  display:inline-block;margin-top:14px;font-size:12px;color:var(--accent2);
+  text-decoration:none;font-weight:500;
+}
+.proj-link:hover{text-decoration:underline;}
+
+.chat-fab{
+  position:fixed;bottom:32px;right:32px;z-index:1000;
+  width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 24px rgba(0,212,170,0.35);
+  transition:transform 0.2s;
+}
+.chat-fab:hover{transform:scale(1.08);}
+.chat-fab svg{width:26px;height:26px;fill:#000;}
+
+.chat-panel{
+  position:fixed;bottom:104px;right:32px;z-index:999;
+  width:360px;max-height:520px;
+  background:var(--chat-bg);border:1px solid var(--border);border-radius:18px;
+  display:flex;flex-direction:column;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+  transform:scale(0.9) translateY(20px);
+  opacity:0;pointer-events:none;
+  transition:all 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+.chat-panel.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all;}
+.chat-header{
+  padding:18px 20px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:12px;background:var(--card);
+}
+.chat-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:#000;
+}
+.chat-header-info h3{font-size:14px;font-weight:600;color:#fff;}
+.chat-header-info p{font-size:11px;color:var(--accent);}
+.chat-status{width:7px;height:7px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;margin-left:auto;}
+
+.chat-msgs{
+  flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;
+}
+.chat-msgs::-webkit-scrollbar{width:4px;}
+.chat-msgs::-webkit-scrollbar-track{background:transparent;}
+.chat-msgs::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+
+.msg{max-width:88%;display:flex;flex-direction:column;gap:4px;}
+.msg.user{align-self:flex-end;align-items:flex-end;}
+.msg.bot{align-self:flex-start;}
+.bubble{
+  padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.55;
+}
+.msg.user .bubble{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;font-weight:500;}
+.msg.bot .bubble{background:var(--card);color:var(--text);border:1px solid var(--border);}
+.msg-time{font-size:10px;color:var(--muted);}
+
+.chat-suggestions{
+  padding:8px 16px;display:flex;gap:8px;overflow-x:auto;flex-shrink:0;
+}
+.chat-suggestions::-webkit-scrollbar{display:none;}
+.suggestion{
+  white-space:nowrap;font-size:11px;font-weight:500;
+  padding:6px 12px;border-radius:20px;
+  border:1px solid var(--border);background:transparent;
+  color:var(--muted);cursor:pointer;transition:all 0.2s;font-family:inherit;
+}
+.suggestion:hover{border-color:var(--accent);color:var(--accent);}
+
+.chat-input-row{
+  padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:10px;align-items:center;
+}
+#chatInput{
+  flex:1;background:var(--card);border:1px solid var(--border);border-radius:10px;
+  color:var(--text);font-size:13px;padding:10px 14px;font-family:inherit;outline:none;
+  transition:border-color 0.2s;
+}
+#chatInput:focus{border-color:var(--accent);}
+#chatInput::placeholder{color:var(--muted);}
+.send-btn{
+  width:38px;height:38px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:opacity 0.2s;
+}
+.send-btn:hover{opacity:0.85;}
+.send-btn svg{width:16px;height:16px;fill:#000;}
+
+.typing{display:flex;gap:4px;padding:4px 0;}
+.typing span{
+  width:5px;height:5px;border-radius:50%;background:var(--muted);
+  animation:bounce 1.2s ease-in-out infinite;
+}
+.typing span:nth-child(2){animation-delay:0.15s;}
+.typing span:nth-child(3){animation-delay:0.3s;}
+@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
+
+footer{
+  border-top:1px solid var(--border);padding-top:32px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.footer-text{font-size:13px;color:var(--muted);}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{
+  font-size:13px;color:var(--muted);text-decoration:none;
+  transition:color 0.2s;
+}
+.footer-links a:hover{color:var(--accent);}
+
+@media(max-width:700px){
+  .hero{grid-template-columns:1fr;gap:40px;}
+  .hero h1{font-size:38px;}
+  .skills-grid{grid-template-columns:1fr 1fr;}
+  .projects-grid{grid-template-columns:1fr;}
+  .chat-panel{width:calc(100vw - 32px);right:16px;}
+  .chat-fab{bottom:20px;right:20px;}
+}
+</style>
+</head>
+<body>
+<div class="site">
+  <nav>
+    <div class="logo">SM<span>.</span></div>
+    <div class="nav-links">
+      <a href="#about" onclick="scroll(event,'about')">About</a>
+      <a href="#skills" onclick="scroll(event,'skills')">Skills</a>
+      <a href="#experience" onclick="scroll(event,'experience')">Experience</a>
+      <a href="#projects" onclick="scroll(event,'projects')">Projects</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <div class="hero-badge"><span class="dot"></span> Available for opportunities</div>
+      <h1>Sibongiseni<br><em>Mthetwa</em></h1>
+      <p>Data Analyst &amp; Software Developer turning raw data into strategic decisions — with code that scales and insights that matter.</p>
+      <div class="btns">
+        <a class="btn-primary" href="https://sibongiseni1.github.io/Personal-Website/img/SIBONGISENI MTHETWA CV ATS.pdf" target="_blank">Download CV</a>
+        <button class="btn-outline" onclick="openChat()">Ask me anything ↗</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="stat-card">
+        <div class="stat-icon green">🎓</div>
+        <div><div class="stat-val">BSc IT</div><div class="stat-label">North-West University · 2023</div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon blue">🏛️</div>
+        <div><div class="stat-val">Wits University</div><div class="stat-label">Current role · 2024–present</div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon amber">⚡</div>
+        <div><div class="stat-val">3 Projects</div><div class="stat-label">AI · Web · Data Science</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-label">Expertise</div>
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-chip"><div class="skill-name">Python</div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+      <div class="skill-chip"><div class="skill-name">SQL</div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+      <div class="skill-chip"><div class="skill-name">Power BI</div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+      <div class="skill-chip"><div class="skill-name">Java</div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+      <div class="skill-chip"><div class="skill-name">Data Science (ETL)</div><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
+      <div class="skill-chip"><div class="skill-name">IT Consulting</div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-label">Journey</div>
+    <div class="section-title">Experience &amp; Education</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2024 – PRESENT</div>
+        <div class="tl-role">IT Professional</div>
+        <div class="tl-org">University of the Witwatersrand, Johannesburg</div>
+        <div class="tl-desc">Applying Python, SQL, and data analysis in a university environment to drive data-informed decisions and technical solutions.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2023 – 2024</div>
+        <div class="tl-role">IT Consultant / Developer</div>
+        <div class="tl-org">North-West University</div>
+        <div class="tl-desc">Worked on data structures, Java-based systems, and SQL-driven analytics. Bridged technical development with consulting deliverables.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2020 – 2023</div>
+        <div class="tl-role">BSc Information Technology</div>
+        <div class="tl-org">North-West University</div>
+        <div class="tl-desc">Studied Python, Java, SQL, and Data Structures. Built a strong foundation in software engineering and data management principles.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-label">Portfolio</div>
+    <div class="section-title">Featured Projects</div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="proj-icon" style="background:rgba(0,212,170,0.1)">🤖</div>
+        <div class="proj-title">AI IT Chatbot</div>
+        <div class="proj-desc">Intelligent chatbot for IT-related queries — answers technical questions, troubleshoots issues, and reduces support overhead.</div>
+        <div class="proj-tags"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">AI</span></div>
+        <a class="proj-link" href="https://github.com/sibongiseni1/ChatBot-2025" target="_blank">View source →</a>
+      </div>
+      <div class="project-card">
+        <div class="proj-icon" style="background:rgba(0,153,255,0.1)">📡</div>
+        <div class="proj-title">Website Uptime Monitor</div>
+        <div class="proj-desc">Monitors website availability by polling HTTP status codes. Alerts when sites go DOWN using Python and Java scripts.</div>
+        <div class="proj-tags"><span class="tag">Python</span><span class="tag">Java</span><span class="tag">HTTP</span></div>
+        <a class="proj-link" href="https://github.com/sibongiseni1/Project2025" target="_blank">View source →</a>
+      </div>
+      <div class="project-card">
+        <div class="proj-icon" style="background:rgba(0,153,255,0.1)">📡</div>
+        <div class="proj-title">Community Incident Reporting system</div>
+        <div class="proj-desc">A Community Incident Reporting System is a digital platform that enables citizens to report local issues such as crime, infrastructure damage, or hazards in real time, allowing authorities to respond quickly, track trends, and improve public safety and service delivery.</div>
+        <div class="proj-tags"><span class="tag">Python</span><span class="tag">Java</span><span class="tag">HTTP</span></div>
+        <a class="proj-link" href="https://civic-reporter-seven.vercel.app/" target="_blank">View source →</a>
+      </div>
+      <div class="project-card">
+        <div class="proj-icon" style="background:rgba(0,153,255,0.1)">📡</div>
+        <div class="proj-title">Face Recognition Attendance register</div>
+        <div class="proj-desc">Face recognition Attendance Register for Universities and industrial areas. A python GUI integrated attendance system using face recognition to take attendance.</div>
+        <div class="proj-tags"><span class="tag">Python</span><span class="tag">Java</span><span class="tag">HTTP</span></div>
+        <a class="proj-link" href="https://github.com/sibongiseni1/Face-recognition-Attandence-register" target="_blank">View source →</a>
+      </div>
+      <div class="project-card">
+        <div class="proj-icon" style="background:rgba(0,153,255,0.1)">📡</div>
+        <div class="proj-title">Password generator
+</div>
+        <div class="proj-desc">
+This password generator has a nice,easy to use GUI for users struggling with creating password..</div>
+        <div class="proj-tags"><span class="tag">Python</span><span class="tag">Java</span><span class="tag">HTTP</span></div>
+        <a class="proj-link" href="https://github.com/sibongiseni1/Password-Generator-with-GUI" target="_blank">View source →</a>
+      </div>
+      <div class="project-card">
+        <div class="proj-icon" style="background:rgba(0,153,255,0.1)">📡</div>
+        <div class="proj-title">Community AI Healthcare</div>
+        <div class="proj-desc">AI healthcare uses machine learning to analyze patient data, detect diseases early, support diagnosis, automate administrative tasks, and provide insights, improving efficiency, accuracy, and patient outcomes in medical services.</div>
+        <div class="proj-tags"><span class="tag">Python</span><span class="tag">Java</span><span class="tag">HTTP</span></div>
+        <a class="proj-link" href="https://community-ai-health-care-wgr6.vercel.app/" target="_blank">View source →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-text">© 2025 Sibongiseni Mthetwa</div>
+    <div class="footer-links">
+      <a href="https://github.com/sibongiseni1" target="_blank">GitHub</a>
+      <a href="https://sibongiseni1.github.io/Personal-Website/img/SIBONGISENI MTHETWA CV ATS.pdf" target="_blank">CV</a>
+    </div>
+  </footer>
+</div>
+
+<button class="chat-fab" onclick="openChat()" title="Chat with Sibongiseni's AI">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+</button>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="chat-avatar">SM</div>
+    <div class="chat-header-info">
+      <h3>Ask Sibongiseni</h3>
+      <p>AI-powered · Answers about me only</p>
+    </div>
+    <div class="chat-status"></div>
+  </div>
+  <div class="chat-msgs" id="chatMsgs">
+    <div class="msg bot">
+      <div class="bubble">👋 Hi! I'm Sibongiseni's AI assistant. Ask me anything about his skills, experience, projects, or how to work with him!</div>
+      <div class="msg-time">Now</div>
+    </div>
+  </div>
+  <div class="chat-suggestions">
+    <button class="suggestion" onclick="askQ('What are your top skills?')">Top skills?</button>
+    <button class="suggestion" onclick="askQ('Tell me about your projects')">Projects</button>
+    <button class="suggestion" onclick="askQ('Where do you work now?')">Current role</button>
+    <button class="suggestion" onclick="askQ('Are you available for hire?')">Available?</button>
+  </div>
+  <div class="chat-input-row">
+    <input id="chatInput" type="text" placeholder="Ask about Sibongiseni..." onkeydown="if(event.key==='Enter')sendMsg()">
+    <button class="send-btn" onclick="sendMsg()">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+const PROFILE = `
+You are an AI assistant embedded in Sibongiseni Mthetwa's personal portfolio website.
+You ONLY answer questions about Sibongiseni Mthetwa. If asked about anything unrelated to him, politely redirect to topics about him.
+
+Here is everything you know about Sibongiseni:
+
+NAME: Sibongiseni Mthetwa
+LOCATION: Johannesburg, South Africa
+TAGLINE: Data Analyst, Software Developer, IT Consultant — constantly evolving and passionate about learning.
+
+EDUCATION:
+- BSc Information Technology, North-West University (2020–2023)
+- Subjects: Python, SQL, Data Structures, Java
+
+EXPERIENCE:
+- IT Professional at University of the Witwatersrand (2024–present) — applying Python, SQL, data analysis
+- IT Consultant/Developer at North-West University (2023–2024) — Java systems, SQL analytics, consulting
+
+TECHNICAL SKILLS:
+- Languages: Python (expert), Java (proficient), SQL (expert)
+- Tools: Power BI (dashboards), ETL pipelines
+- Domains: Data Science, IT Consulting, Software Development, AI/Chatbots, Web Monitoring
+
+PROJECTS:
+1. AI IT Chatbot (github.com/sibongiseni1/ChatBot-2025) — Python NLP chatbot for IT support queries
+2. Website Uptime Monitor (github.com/sibongiseni1/Project2025) — Python + Java script to monitor HTTP status and detect downtime
+3. Data Science ETL — SQL + Power BI dashboards for extract-transform-load data pipelines
+
+GITHUB: github.com/sibongiseni1
+CV: Available for download on his website
+
+AVAILABILITY: Open to new opportunities and consulting work.
+
+Keep answers concise, professional, and helpful. Use a friendly but professional tone. If someone asks how to contact or hire him, mention they can download his CV or connect via GitHub.
+`;
+
+let chatOpen = false;
+
+function openChat(){
+  chatOpen = !chatOpen;
+  document.getElementById('chatPanel').classList.toggle('open', chatOpen);
+  if(chatOpen) document.getElementById('chatInput').focus();
+}
+
+function scroll(e, id){
+  e.preventDefault();
+  document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
+}
+
+function askQ(q){
+  document.getElementById('chatInput').value = q;
+  sendMsg();
+}
+
+function timeStr(){
+  return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+}
+
+function addMsg(text, role){
+  const msgs = document.getElementById('chatMsgs');
+  const div = document.createElement('div');
+  div.className = 'msg ' + role;
+  div.innerHTML = `<div class="bubble">${text}</div><div class="msg-time">${timeStr()}</div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function addTyping(){
+  const msgs = document.getElementById('chatMsgs');
+  const div = document.createElement('div');
+  div.className = 'msg bot';
+  div.id = 'typing-indicator';
+  div.innerHTML = `<div class="bubble"><div class="typing"><span></span><span></span><span></span></div></div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTyping(){
+  document.getElementById('typing-indicator')?.remove();
+}
+
+async function sendMsg(){
+  const input = document.getElementById('chatInput');
+  const q = input.value.trim();
+  if(!q) return;
+  input.value = '';
+  addMsg(q, 'user');
+  addTyping();
+
+  try{
+    const res = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system: PROFILE,
+        messages:[{role:'user',content:q}]
+      })
+    });
+    const data = await res.json();
+    removeTyping();
+    const reply = data.content?.map(b=>b.text||'').join('') || "Sorry, I couldn't get a response right now.";
+    addMsg(reply, 'bot');
+  } catch(e){
+    removeTyping();
+    addMsg("Sorry, something went wrong. Please try again.", 'bot');
+  }
+}
+</script>
+</body>
+</html>
