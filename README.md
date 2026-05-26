@@ -1,8 +1,10 @@
 Linke to the website:  https://sibongiseni1.github.io/Personal-Website/
 
-<img width="1879" height="922" alt="image" src="https://github.com/user-attachments/assets/b1d0800a-0429-4985-9924-e1e455e1bfe4" />
-<img width="1875" height="931" alt="image" src="https://github.com/user-attachments/assets/073bfa08-2a9f-45dc-9e1e-47068652e365" />
-<img width="1920" height="727" alt="image" src="https://github.com/user-attachments/assets/66848ec3-7319-4ec0-9b8b-47eb348b3fa9" />
+<img width="1111" height="918" alt="image" src="https://github.com/user-attachments/assets/c217307b-9ae5-43a1-8bd4-fd9e9aa187a1" />
+<img width="1092" height="941" alt="image" src="https://github.com/user-attachments/assets/aaabbe37-274d-4883-a06b-625635779809" />
+<img width="1113" height="938" alt="image" src="https://github.com/user-attachments/assets/e1f4e1b2-3858-454c-93f6-8c423c24679b" />
+
+
 
 
 
